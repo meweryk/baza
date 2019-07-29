@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Список материалов</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        background-color: dimgrey;
+        margin: 20px;
+        padding: 5px;
+        font-size: 1em;
+        color: rgb(255, 255, 255);
+    }
+    form div input {
+        width: 10em;
+    }
+    .visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+
+
+</style>
+<body>
+    <h2>Список материалов</h2>
+    <a class="btn btn-sm btn-primary" href="ScrapGroup.html">Группы отходов</a>
+    <form name="materialForm" class="was-validated">
+        <input type="hidden" name="id" value="0" />
+        <div class="form-group row">
+            <label for="vid" class="col-sm-2 col-form-label">Наименование материала:</label>
+            <div class="col-sm-10 h-25 w-25">
+                <input class="form-control form-control-sm" name="vid" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ni" class="col-sm-2 col-form-label float-right">Ni%</label>
+            <div class="col-sm-10">
+                <input class="form-control form-control-sm" name="ni" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="cr" class="col-sm-2 col-form-label">Cr%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="cr" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="mo" class="col-sm-2 col-form-label">Mo%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="mo" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        	<div class="form-group row">
+        	<label for="cu" class="col-sm-2 col-form-label">Cu%</label>
+            <div class="col-sm-10">
+                <input class="form-control form-control-sm" name="cu" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="mn" class="col-sm-2 col-form-label">Mn%</label>
+            <div class="col-sm-10">
+                <input class="form-control form-control-sm" name="mn" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="w" class="col-sm-2 col-form-label">W%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="w" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="v" class="col-sm-2 col-form-label">V%</label>
+            <div class="col-sm-10">
+                <input class="form-control form-control-sm" name="v" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="co" class="col-sm-2 col-form-label">Co%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="co" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="si" class="col-sm-2 col-form-label">Si%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="si" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="ti" class="col-sm-2 col-form-label">Ti%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="ti" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="al" class="col-sm-2 col-form-label">Al%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="al" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+        <div class="form-group row">
+        	<label for="nb" class="col-sm-2 col-form-label">Nb%</label>
+        	<div class="col-sm-10">
+                <input class="form-control form-control-sm" name="nb" type="number" step="any" min="0" max="100"/>
+            </div>
+        </div>
+      	<div class="panel-body">
+            <button type="submit" class="btn btn-sm btn-primary">Сохранить</button>
+            <a id="reset" class="btn btn-sm btn-primary">Сбросить</a>
+        </div>
+    </form>
+    <table class="table table-sm table-light table-hover table-bordered table-responsive-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Вид</th>
+                <th>Ni%</th>
+                <th>Cr%</th>
+                <th>Mo%</th>
+                <th>Cu%</th>
+                <th>Mn%</th>
+                <th>W%</th>
+                <th>V%</th>
+                <th>Co%</th>
+                <th>Si%</th>
+                <th>Ti%</th>
+                <th>Al%</th>
+                <th>Nb%</th>
+                <th>Действие</th>
+            </tr></thead>
+        <tbody class="table-info">
+        </tbody>
+    </table>
+
+    <script>
+        // Получение всех материалов
+        function GetMaterials() {
+            $.ajax({
+                url: "/api/materials",
+                type: "GET",
+                contentType: "application/json",
+                success: function (materials) {
+                    var rows = "";
+                    $.each(materials, function (index, material) {
+                        // добавляем полученные элементы в таблицу
+                        rows += row(material);
+                    })
+                    $("table tbody").append(rows);
+                 }
+            });
+        }
+        // Получение одного пользователя
+        function GetMaterial(id) {
+            $.ajax({
+                url: "/api/materials/"+id,
+                type: "GET",
+                contentType: "application/json",
+                success: function (material) {
+                    var form = document.forms["materialForm"];
+                    form.elements["id"].value = 1;
+                    form.elements["vid"].value = material._id;
+                    form.elements["ni"].value = material.ni;
+                    form.elements["cr"].value = material.cr;
+                    form.elements["mo"].value = material.mo;
+                    form.elements["cu"].value = material.cu;
+                    form.elements["mn"].value = material.mn;
+                    form.elements["w"].value = material.w;
+                    form.elements["v"].value = material.v;
+                    form.elements["co"].value = material.co;
+                    form.elements["si"].value = material.si;
+                    form.elements["ti"].value = material.ti;
+                    form.elements["al"].value = material.al;
+                    form.elements["nb"].value = material.nb;
+                }
+            });
+        }
+        // Добавление материала
+        function CreateMaterial(materialId, materialNi, materialCr, materialMo, materialCu, materialMn, materialW, materialV, materialCo, materialSi, materialTi, materialAl, materialNb) {
+            $.ajax({
+                url: "api/materials",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({
+                    id: materialId,
+                    ni: materialNi,
+                    cr: materialCr,
+                    mo: materialMo,
+                    cu: materialCu,
+                    mn: materialMn,
+                    w: materialW,
+                    v: materialV,
+                    co: materialCo,
+                    si: materialSi,
+                    ti: materialTi,
+                    al: materialAl,
+                    nb: materialNb
+                }),
+                success: function (material) {
+                    reset();
+                    $("table tbody").append(row(material));
+                }
+            })
+        }
+        // Изменение материала
+        function EditMaterial(materialId, materialNi, materialCr, materialMo, materialCu, materialMn, materialW, materialV, materialCo, materialSi, materialTi, materialAl, materialNb) {
+            $.ajax({
+                url: "api/materials",
+                contentType: "application/json",
+                method: "PUT",
+                data: JSON.stringify({
+                	id: materialId,
+                    ni: materialNi,
+                    cr: materialCr,
+                    mo: materialMo,
+                    cu: materialCu,
+                    mn: materialMn,
+                    w: materialW,
+                    v: materialV,
+                    co: materialCo,
+                    si: materialSi,
+                    ti: materialTi,
+                    al: materialAl,
+                    nb: materialNb
+                }),
+                success: function (material) {
+                    reset();
+					console.log(material);
+                    $("tr[data-rowid='" + material._id + "']").replaceWith(row(material));
+                }
+            })
+        }
+
+        // сброс формы
+        function reset() {
+            var form = document.forms["materialForm"];
+            form.reset();
+            form.elements["id"].value = 0;
+        }
+
+        // Удаление материала
+        function DeleteMaterial(id) {
+            $.ajax({
+                url: "api/materials/"+id,
+                contentType: "application/json",
+                method: "DELETE",
+                success: function (material) {
+					console.log(material);
+                    $("tr[data-rowid='" + material._id + "']").remove();
+                }
+            })
+        }
+        // создание строки для таблицы
+        var row = function (material) {
+            return "<tr data-rowid='" + material._id + "'><td style='width: 1;'>" + material._id + "</td>" + 
+                "<td>" + material.ni + "</td> <td>" + material.cr + "</td>" +
+                "<td>" + material.mo + "</td> <td>" + material.cu + "</td> <td>" + material.mn + "</td>" +
+                "<td>" + material.w + "</td> <td>" + material.v + "</td> <td>" + material.co + "</td>" +
+                "<td>" + material.si + "</td> <td>" + material.ti + "</td> <td>" + material.al + "</td>" +
+                "<td>" + material.nb + "</td>" +
+                "<td><a class='editLink' data-id='" + material._id + "'>Изменить</a> | <a class='removeLink' data-id='" + material._id + "'>Удалить</a></td></tr>";
+        }
+        // сброс значений формы
+        $("#reset").click(function (e) {
+
+            e.preventDefault();
+            reset();
+        })
+
+        // отправка формы
+        $("form").submit(function (e) {
+            e.preventDefault();
+            var id = this.elements["id"].value;
+            var vid = this.elements["vid"].value;
+            var ni = this.elements["ni"].value;
+            var cr = this.elements["cr"].value;
+            var mo = this.elements["mo"].value;
+            var cu = this.elements["cu"].value;
+            var mn = this.elements["mn"].value;
+            var w = this.elements["w"].value;
+            var v = this.elements["v"].value;
+            var co = this.elements["co"].value;
+            var si = this.elements["si"].value;
+            var ti = this.elements["ti"].value;
+            var al = this.elements["al"].value;
+            var nb = this.elements["nb"].value;
+            if (id == 0) 
+                CreateMaterial(vid, ni, cr, mo, cu, mn, w, v, co, si, ti, al, nb);
+            else
+                EditMaterial(vid, ni, cr, mo, cu, mn, w, v, co, si, ti, al, nb);
+        });
+
+        // нажимаем на ссылку Изменить
+        $("body").on("click", ".editLink", function () {
+            var id = $(this).data("id");
+            alert(id);
+            GetMaterial(id);
+        })
+        // нажимаем на ссылку Удалить
+        $("body").on("click", ".removeLink", function () {
+            var id = $(this).data("id");
+            DeleteMaterial(id);
+        })
+
+        // загрузка материалов
+        GetMaterials();
+    </script>
+</body>
+</html>

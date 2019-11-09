@@ -19,9 +19,7 @@ function ChangeSize() {
 $(function () {
     $(window).ready(ChangeSize); // событие загрузки html, определяем размер окна таблицы
     $(window).resize(ChangeSize); // событие изменения окна браузера, определяем размер окна таблицы
-    /*window.addEventListener("resize", function() {
-        alert("Размер окна теперь равен " + window.innerWidth + "px");
-    });*/ // событие ресайз окна браузера
+
     //прикрепляем клик по заголовкам acc-head, аккордеон просмотр
     $('#accordeon .acc-head').on('click', f_acc);
 });
@@ -62,20 +60,46 @@ function tableSearch() {
     }
 }
 
+/*var Material = (function () {
+    function Material(_vid, _ni, _cr, _mo, _cu, _mn, _w, _v, _co, _si, _ti, _al, _nb, _fe, _s, _p, _c, _classSteel, _groupSteel, _markSteel) {
+        this.vid = _vid;
+        this.ni = _ni;
+        this.cr = _cr;
+        this.mo = _mo;
+        this.cu = _cu;
+        this.mn = _mn;
+        this.w = _w;
+        this.v = _v;
+        this.co = _co;
+        this.si = _si;
+        this.ti = _ti;
+        this.al = _al;
+        this.nb = _nb;
+        this.fe = _fe;
+        this.s = _s;
+        this.p = _p;
+        this.c = _c;
+        this.classSteel = _classSteel;
+        this.groupSteel = _groupSteel;
+        this.markSteel = _markSteel
+    }
+    return Material;
+}());*/
 
 /*$(function () {
+
     var i, j;
     var scrap = [];
     var him = [];
     var name_scrap = $(".acc-body tr");
     for (i = 0; i < name_scrap.length; i++) {
         var scrap_row = $(".acc-body tr").eq(i);
-        var him = new Array(13);
-        for (j = 0; j < 13; j++) {
+        var him = new Array(20);
+        for (j = 0; j < 20; j++) {
             him[j] = scrap_row.children().eq(j).text();
             if (him[j] == "") {
                 him[j] = 0;
-            }            
+            }
         }
         var vid = him[0];
         var ni = him[1];
@@ -90,30 +114,46 @@ function tableSearch() {
         var ti = him[10];
         var al = him[11];
         var nb = him[12];
-        CreateMaterial(vid, ni, cr, mo, cu, mn, w, v, co, si, ti, al, nb);
+        var fe = him[13];
+        var s = him[14];
+        var p = him[15];
+        var c = him[16];
+        var classSteel = him[17];
+        var groupSteel = him[18];
+        var markSteel = him[19];
+        CreateMaterial(vid, ni, cr, mo, cu, mn, w, v, co, si, ti, al, nb, fe, s, p, c, classSteel, groupSteel, markSteel);
         scrap[i] = him;
+        console.log(`группа ${him}`)
     }
 });
 
-function CreateMaterial(materialId, materialNi, materialCr, materialMo, materialCu, materialMn, materialW, materialV, materialCo, materialSi, materialTi, materialAl, materialNb) {
+function CreateMaterial(Vid, Ni, Cr, Mo, Cu, Mn, W, V, Co, Si, Ti, Al, Nb, Fe, S, P, C, ClassSteel, GroupSteel, MarkSteel) {
+
     $.ajax({
         url: "api/materials",
         contentType: "application/json",
         method: "POST",
         data: JSON.stringify({
-            id: materialId,
-            ni: materialNi,
-            cr: materialCr,
-            mo: materialMo,
-            cu: materialCu,
-            mn: materialMn,
-            w: materialW,
-            v: materialV,
-            co: materialCo,
-            si: materialSi,
-            ti: materialTi,
-            al: materialAl,
-            nb: materialNb
+            vid: Vid,
+            ni: Ni,
+            cr: Cr,
+            mo: Mo,
+            cu: Cu,
+            mn: Mn,
+            w: W,
+            v: V,
+            co: Co,
+            si: Si,
+            ti: Ti,
+            al: Al,
+            nb: Nb,
+            fe: Fe,
+            s: S,
+            p: P,
+            c: C,
+            classSteel: ClassSteel,
+            groupSteel: GroupSteel,
+            markSteel: MarkSteel
         })
     })
 }*/

@@ -94,7 +94,7 @@ app.get("/api/materials", function (req, res) {
   Material.find({}, function (err, materials) {
     if (err) return console.log(err);
     res.send(materials);
-  });
+  }).sort({ 'vid': 1 });
 });
 
 app.get("/api/materials/:id", function (req, res) {

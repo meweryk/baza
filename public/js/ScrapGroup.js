@@ -60,32 +60,7 @@ function tableSearch() {
     }
 }
 
-/*var Material = (function () {
-    function Material(_vid, _ni, _cr, _mo, _cu, _mn, _w, _v, _co, _si, _ti, _al, _nb, _fe, _s, _p, _c, _classSteel, _groupSteel, _markSteel) {
-        this.vid = _vid;
-        this.ni = _ni;
-        this.cr = _cr;
-        this.mo = _mo;
-        this.cu = _cu;
-        this.mn = _mn;
-        this.w = _w;
-        this.v = _v;
-        this.co = _co;
-        this.si = _si;
-        this.ti = _ti;
-        this.al = _al;
-        this.nb = _nb;
-        this.fe = _fe;
-        this.s = _s;
-        this.p = _p;
-        this.c = _c;
-        this.classSteel = _classSteel;
-        this.groupSteel = _groupSteel;
-        this.markSteel = _markSteel
-    }
-    return Material;
-}());*/
-
+//Запись групп отходов в базу
 /*$(function () {
 
     var i, j;
@@ -95,11 +70,15 @@ function tableSearch() {
     for (i = 0; i < name_scrap.length; i++) {
         var scrap_row = $(".acc-body tr").eq(i);
         var him = new Array(20);
-        for (j = 0; j < 20; j++) {
+        for (j = 0; j < 19; j++) {
             him[j] = scrap_row.children().eq(j).text();
-            if (him[j] == "") {
+            if ((him[j] == "") && (j < 17) && (j !== 9) && (j !== 11) && (j !== 12)) {
                 him[j] = 0;
             }
+            if (j == 18 && him[j] == "") {
+                him[j] = him[17];
+            }
+
         }
         var vid = him[0];
         var ni = him[1];
